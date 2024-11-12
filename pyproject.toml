@@ -25,6 +25,10 @@ classifiers = [
 python = "^3.10"
 nodestream = "^0.13.0"
 
+[tool.ruff]
+# Allow lines to be as long as 120.
+line-length = 120
+
 [tool.poetry.plugins."nodestream.plugins"]
 projects = "nodestream_plugin_meta.plugin"
 
