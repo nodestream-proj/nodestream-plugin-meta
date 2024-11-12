@@ -4,8 +4,7 @@ from typing import Iterable, Optional
 from nodestream.model import DesiredIngestion, Node, Relationship
 from nodestream.pipeline import Extractor
 from nodestream.project import Project
-from nodestream.schema import (Adjacency, GraphObjectSchema, PropertyMetadata,
-                               Schema)
+from nodestream.schema import Adjacency, GraphObjectSchema, PropertyMetadata, Schema
 
 NODE_TYPE_TYPE = "NodeType"
 REL_TYPE_TYPE = "RelationshipType"

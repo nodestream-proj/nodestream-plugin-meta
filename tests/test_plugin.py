@@ -3,15 +3,25 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from nodestream.model import DesiredIngestion, Node, Relationship
-from nodestream.schema import (Adjacency, AdjacencyCardinality,
-                               GraphObjectSchema, PropertyMetadata, Schema)
+from nodestream.schema import (
+    Adjacency,
+    AdjacencyCardinality,
+    GraphObjectSchema,
+    PropertyMetadata,
+    Schema,
+)
 
-from nodestream_plugin_meta.plugin import (SchemaRenderer,
-                                           find_nodestream_yaml,
-                                           has_property_rel, node_by_name,
-                                           rel_by_name, render_adjacency,
-                                           render_node, render_property,
-                                           render_relationship)
+from nodestream_plugin_meta.plugin import (
+    SchemaRenderer,
+    find_nodestream_yaml,
+    has_property_rel,
+    node_by_name,
+    rel_by_name,
+    render_adjacency,
+    render_node,
+    render_property,
+    render_relationship,
+)
 
 
 def test_find_nodestream_yaml_in_current_dir():
