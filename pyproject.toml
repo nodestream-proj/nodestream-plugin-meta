@@ -29,6 +29,9 @@ nodestream = "^0.13.0"
 # Allow lines to be as long as 120.
 line-length = 120
 
+[tool.isort]
+profile = "black"
+
 [tool.poetry.plugins."nodestream.plugins"]
 projects = "nodestream_plugin_meta.plugin"
 
