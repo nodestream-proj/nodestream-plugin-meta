@@ -42,12 +42,12 @@ def test_find_nodestream_yaml_not_found():
 
 
 def test_render_property():
-    property_name = "name"
+    property_name = "id"
     property = PropertyMetadata(is_key=True)
     owner = GraphObjectSchema(name="Person")
     node = render_property(owner, property_name, property)
 
-    expected_keys = {"owner": "Person", "name": "name"}
+    expected_keys = {"owner": "Person", "id": "id"}
     assert node.key_values == expected_keys
     assert node.properties["type"] == property.type.value
     assert node.properties["is_key"] == property.is_key
@@ -64,7 +64,7 @@ def test_rel_by_name():
     node = rel_by_name(name)
     assert isinstance(node, Node)
     assert node.type == "RelationshipType"
-    assert node.key_values["name"] == name
+    assert node.key_values["id"] == name
 
 
 def test_node_by_name():
@@ -72,18 +72,18 @@ def test_node_by_name():
     node = node_by_name(name)
     assert isinstance(node, Node)
     assert node.type == "NodeType"
-    assert node.key_values["name"] == name
+    assert node.key_values["id"] == name
 
 
 def test_render_node():
     schema = GraphObjectSchema(
-        name="Person", properties={"name": PropertyMetadata(is_key=True)}
+        name="Person", properties={"id": PropertyMetadata(is_key=True)}
     )
     ingestion = render_node(schema)
     assert isinstance(ingestion, DesiredIngestion)
-    assert ingestion.source.key_values["name"] == "Person"
+    assert ingestion.source.key_values["id"] == "Person"
     assert len(ingestion.relationships) == 1
-    assert ingestion.relationships[0].to_node.key_values["name"] == "name"
+    assert ingestion.relationships[0].to_node.key_values["id"] == "id"
 
 
 def test_render_relationship():
@@ -92,9 +92,9 @@ def test_render_relationship():
     )
     ingestion = render_relationship(schema)
     assert isinstance(ingestion, DesiredIngestion)
-    assert ingestion.source.key_values["name"] == "FRIENDS_WITH"
+    assert ingestion.source.key_values["id"] == "FRIENDS_WITH"
     assert len(ingestion.relationships) == 1
-    assert ingestion.relationships[0].to_node.key_values["name"] == "since"
+    assert ingestion.relationships[0].to_node.key_values["id"] == "since"
 
 
 def test_render_adjacency():
@@ -105,9 +105,9 @@ def test_render_adjacency():
     assert isinstance(ingestion, DesiredIngestion)
     assert ingestion.source.key_values["id"] == "Person_City_LIVES_IN"
     assert len(ingestion.relationships) == 3
-    assert ingestion.relationships[0].to_node.key_values["name"] == "Person"
-    assert ingestion.relationships[1].to_node.key_values["name"] == "City"
-    assert ingestion.relationships[2].to_node.key_values["name"] == "LIVES_IN"
+    assert ingestion.relationships[0].to_node.key_values["id"] == "Person"
+    assert ingestion.relationships[1].to_node.key_values["id"] == "City"
+    assert ingestion.relationships[2].to_node.key_values["id"] == "LIVES_IN"
 
 
 def test_schema_renderer_from_file_data():
@@ -135,7 +135,7 @@ def test_schema_renderer_render_schema():
     schema = Schema()
     schema.put_node_type(
         GraphObjectSchema(
-            name="Person", properties={"name": PropertyMetadata(is_key=True)}
+            name="Person", properties={"id": PropertyMetadata(is_key=True)}
         )
     )
     schema.put_relationship_type(
