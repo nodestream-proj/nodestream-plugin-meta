@@ -37,7 +37,7 @@ def render_property(
 ) -> Node:
     node = Node(type=PROPERTY_TYPE)
     node.key_values.set_property("owner", owner.name)
-    node.key_values.set_property("name", name)
+    node.key_values.set_property("id", name)
     node.properties.set_property("type", property.type.value)
     node.properties.set_property("is_key", property.is_key)
     return node
@@ -49,13 +49,13 @@ def has_property_rel() -> Relationship:
 
 def rel_by_name(name: str) -> Node:
     node = Node(type=REL_TYPE_TYPE, additional_types=(GRAPH_OBJECT_TYPE_TYPE,))
-    node.key_values.set_property("name", name)
+    node.key_values.set_property("id", name)
     return node
 
 
 def node_by_name(name: str) -> Node:
     node = Node(type=NODE_TYPE_TYPE, additional_types=(GRAPH_OBJECT_TYPE_TYPE,))
-    node.key_values.set_property("name", name)
+    node.key_values.set_property("id", name)
     return node
 
 
