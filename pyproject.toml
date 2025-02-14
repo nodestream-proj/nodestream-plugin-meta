@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nodestream-plugin-meta"
-version = "0.13.0"
+version = "0.13.1"
 description = "A plugin to nodestream for building a graph of the schema of the graph."
 authors = ["Zach Probst <Zach_Probst@intuit.com>"]
 packages = [{include = "nodestream_plugin_meta"}]
